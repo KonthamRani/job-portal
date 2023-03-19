@@ -20,8 +20,8 @@ function Navs() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<LandingPage/>} />
-                <Route path="/employer/auth" type="employer" element={<Auth/>} />
-                <Route path="/candidate/auth/:id" type="candidate" element={<Auth/>} />
+                <Route path="/employer/auth"  element={<Auth type="employer"/>} />
+                <Route path="/candidate/auth"  element={<Auth type="candidate"/>} />
                 
                 <Route path='/candidate/jobs' element={<CandidateJobs/>}/>
                 <Route path='/candidate/profile' element={<CandidateProfile/>}/>

@@ -1,10 +1,12 @@
 import React from 'react'
 import Navs from './Navs'
+import {UserContextProvider} from './context/UserContext'
 function App() {
   return (
-    <div>
-      App
-      <Navs/>
+    <div style={{ textAlign: 'center' }}>
+      <UserContextProvider>
+        <Navs />
+      </UserContextProvider>
     </div>
   )
 }
