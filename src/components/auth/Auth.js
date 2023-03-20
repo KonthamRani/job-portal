@@ -6,11 +6,35 @@ import btn from '../../assets/btn.png'
 import './Auth.css'
 import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {auth} from '../../FireBaseConfig/FireBaseConfig'
-
+import {useNavigate} from 'react-router-dom'
 
 function Auth({type}) {
+  const navigate=useNavigate();
   const provider = new GoogleAuthProvider();
   const [userData,dispatch]=useContext(UserContext);
+  const redirectUser=()=>{
+    if(type==='candidate'){
+      //if user exists in db
+if(false){
+
+  navigate('/candidate/profile')
+}
+//user not exist
+else{
+  navigate('/candidate/onboarding')
+}
+    }
+    else{
+      if(false){
+        navigate('/employer/profile')
+      }
+      else{
+        navigate('/employer/onboarding')
+      }
+    }
+  }
+  
+  
   const signIn=()=>{
 
     signInWithPopup(auth, provider)
@@ -30,6 +54,7 @@ function Auth({type}) {
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
         // ...
+        redirectUser();
       }).catch((error) => {
         // Handle Errors here.
         const errorCode = error.code;
