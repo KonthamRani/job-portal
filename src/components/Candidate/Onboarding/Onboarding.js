@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Grid, TextField } from '@mui/material'
 import DropDown from'../../common/DropDown/DropDown'
 import FileUpload from '../../common/FileUpload/FileUpload'
 import './Onboarding.css'
 import  SearchDropDown  from '../../common/SearchDropDown/SearchDropDown'
 import {skills,experience,primaryRole} from '../../../Content/index'
-
+import {UserContext} from '../../../context/UserContext'
 const CandidateOnboarding = () => {
+  const [userData,dispatch]=useContext(UserContext)
   const [userInformation, setUserInformation] = useState({
-    name: "",
-    email: "",
+    name: userData.user.displayName,
+    email: userData.user.email,
     phone: "",
     location: "",
     primaryRole: "",
@@ -20,6 +21,7 @@ const CandidateOnboarding = () => {
     resume: ""
   })
   const handleSkills=(data,type)=>{
+    console.log(userData);
     if(type==='delete')
     {
       let new_data=userInformation.skills.filter((skill)=>skill !== data)
@@ -43,6 +45,7 @@ const CandidateOnboarding = () => {
     <form onSubmit={e=>{submit(e)}}>
 
     <Grid container spacing={2} className='onboarding-container'>
+      <Grid item xs={12}> <h1>ONBOARDING CANDIDATE</h1> </Grid>
       <Grid item xs={12} md={6}>
         <label className='onboarding-label'>Name</label>
         <TextField required id='outlined-basic' variant='outlined' fullWidth
@@ -51,7 +54,7 @@ const CandidateOnboarding = () => {
       </Grid>
       <Grid item xs={12} md={6}>
         <label className='onboarding-label'>Email</label>
-        <TextField required id='outlined-basic' variant='outlined' fullWidth
+        <TextField disabled id='outlined-basic' variant='outlined' fullWidth
           type={"email"}
           value={userInformation.email}
           onChange={(e) => setUserInformation({ ...userInformation, email: e.target.value })} />

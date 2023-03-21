@@ -14,6 +14,7 @@ function Auth({type}) {
   const [userData,dispatch]=useContext(UserContext);
   const redirectUser=()=>{
     if(type==='candidate'){
+      console.log(userData)
       //if user exists in db
 if(false){
 
