@@ -1,0 +1,20 @@
+.onboarding-container{
+    max-width: 95%;
+    margin: 20px auto !important;
+    padding: 20px 10px;
+    border: 1px solid #001;
+    border-radius: 20px;
+}
+.onboarding-label{
+    font-weight: bold;
+    float: left;
+    padding: 10px;
+}
+.submit-btn button{
+    background: #26d7ab;
+    border-radius: 8px;
+    border: none;
+    padding: 10px 30px;
+    color: #fff;
+    font-size: 15px;
+}
