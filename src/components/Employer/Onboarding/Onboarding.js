@@ -1,12 +1,18 @@
 import React, { useContext, useState } from 'react'
-import { Grid, TextField } from '@mui/material'
+import { Grid, TextField,Button,CircularProgress} from '@mui/material'
 import DropDown from'../../common/DropDown/DropDown'
 import FileUpload from '../../common/FileUpload/FileUpload'
 import './Onboarding.css'
 import  SearchDropDown  from '../../common/SearchDropDown/SearchDropDown'
 import {skills,experience,primaryRole,industry_type,company_size} from '../../../Content/index'
 import {UserContext} from '../../../context/UserContext'
+import {db} from "../../../FireBaseConfig/FireBaseConfig"
+import { useNavigate } from 'react-router-dom';
+import toastMessage from '../../../Util/toastMessages'
+import {doc,setDoc} from 'firebase/firestore';
 const EmployerOnboarding = () => {
+  
+  const [loading,setLoading]=useState(false);
   const [userData,dispatch]=useContext(UserContext)
   const [userInformation, setUserInformation] = useState({
     name: userData.user.displayName,
@@ -23,6 +29,7 @@ const EmployerOnboarding = () => {
     company_logo:""
    
   })
+  const navigate=useNavigate();
   const handleSkills=(data,type)=>{
     console.log(userData);
     if(type==='delete')
@@ -41,8 +48,25 @@ const EmployerOnboarding = () => {
     }
     
   }
-  const submit=(data)=>{
-    console.log(data);
+  
+  const submit=async (e)=>{
+    setLoading(true);
+    e.preventDefault();
+    console.log(userInformation);
+    try{
+    await setDoc(doc(db,'users',userData.user.email)
+    ,
+    {...userInformation,
+    userType:'employer'})
+    setLoading(false)
+    toastMessage('Onboarding Successful',"success")
+    navigate('/employer/profile')
+    }
+    catch(e){
+      console.log(e);
+      toastMessage("Onboarding failed","danger")
+      setLoading(false)
+    }
   }
   return (
     <form onSubmit={e=>{submit(e)}}>
@@ -122,15 +146,22 @@ const EmployerOnboarding = () => {
       </Grid>
       
       <Grid item xs={12}>
-        <FileUpload
+         <FileUpload
         required={true}
         fileType={'image'}
-        value={'userInformation.company_logo'}
+        value={userInformation.company_logo}
         onUpload={(url)=>setUserInformation({...userInformation,company_logo:url})}
-        />
+        /> 
       </Grid>
       <Grid item xs={12} className='submit-btn'>
-        <button type='submit'>Complete Onboarding</button>
+        {
+            loading?
+        (  <button type='submit'>
+            <CircularProgress/>
+          </button>)
+        :(
+        <Button disabled={userInformation.resume === ""} type="submit">Complete Onboarding</Button>)
+        }
       </Grid>
 
     </Grid>

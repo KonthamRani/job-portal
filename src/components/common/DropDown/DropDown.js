@@ -24,8 +24,8 @@ export default function DropDown({
           onChange={(e)=>onChange(e.target.value)}
         >
             {
-                options.map(opt=>{
-                    return <MenuItem value={opt}>{opt}</MenuItem>
+                options.map((opt,index)=>{
+                    return <MenuItem key={index}value={opt}>{opt}</MenuItem>
                 })
             }
         </Select>

@@ -1,13 +1,19 @@
-import React, { useContext, useState } from 'react'
-import { Grid, TextField } from '@mui/material'
+import {doc,setDoc} from 'firebase/firestore';
+import React, { useContext, useState,useEffect } from 'react'
+import { CircularProgress, Grid, TextField ,Button} from '@mui/material'
 import DropDown from'../../common/DropDown/DropDown'
 import FileUpload from '../../common/FileUpload/FileUpload'
 import './Onboarding.css'
 import  SearchDropDown  from '../../common/SearchDropDown/SearchDropDown'
 import {skills,experience,primaryRole} from '../../../Content/index'
 import {UserContext} from '../../../context/UserContext'
+import {db} from "../../../FireBaseConfig/FireBaseConfig"
+import { useNavigate } from 'react-router-dom';
+import toastMessage from '../../../Util/toastMessages'
 const CandidateOnboarding = () => {
+  const [loading,setLoading]=useState(false);
   const [userData,dispatch]=useContext(UserContext)
+  const navigate=useNavigate();
   const [userInformation, setUserInformation] = useState({
     name: userData.user.displayName,
     email: userData.user.email,
@@ -20,6 +26,7 @@ const CandidateOnboarding = () => {
     bio: "",
     resume: ""
   })
+  useEffect(()=>{console.log("resume value is uploaded")},[userInformation.resume])
   const handleSkills=(data,type)=>{
     console.log(userData);
     if(type==='delete')
@@ -38,8 +45,24 @@ const CandidateOnboarding = () => {
     }
     
   }
-  const submit=(data)=>{
-    console.log(data);
+  const submit=async (e)=>{
+    setLoading(true);
+    e.preventDefault();
+    console.log(userInformation);
+    try{
+    await setDoc(doc(db,'users',userData.user.email)
+    ,
+    {...userInformation,
+    userType:'candidate   '})
+    setLoading(false)
+    toastMessage('Onboarding Successful',"success")
+    navigate('/candidate/profile')
+    }
+    catch(e){
+      console.log(e);
+      toastMessage("Onboarding failed","danger")
+      setLoading(false)
+    }
   }
   return (
     <form onSubmit={e=>{submit(e)}}>
@@ -105,11 +128,20 @@ const CandidateOnboarding = () => {
         required={true}
         fileType={'doc'}
         value={userInformation.resume}
-        onUpload={(url)=>setUserInformation({...userInformation,resume:url})}
+        onUpload={(url)=>{
+          console.log(url)
+          setUserInformation({...userInformation,resume:url})}}
         />
       </Grid>
       <Grid item xs={12} className='submit-btn'>
-        <button type='submit'>Complete Onboarding</button>
+        {
+            loading?
+        (  <button type='submit'>
+            <CircularProgress/>
+          </button>)
+        :(
+        <Button disabled={userInformation.resume === ""} type="submit">Complete Onboarding</Button>)
+        }
       </Grid>
 
     </Grid>

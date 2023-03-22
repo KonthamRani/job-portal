@@ -15,8 +15,9 @@ export default function SearchDropDown({onDelete,options,onChange,values}) {
           renderInput={(params) => <TextField {...params} label="Movie" />}
         />
         <div className='item-container'>
-            {values.map((value)=>{
+            {values.map((value,index)=>{
                 return <div
+                key={index}
                 onClick={()=>onDelete(value,'remove')}
                 className='item-value'>{value}</div>
             })}

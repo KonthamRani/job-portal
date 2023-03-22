@@ -17,8 +17,14 @@ function Auth({type}) {
       console.log(userData)
       //if user exists in db
 if(false){
+  if(true){
 
-  navigate('/candidate/profile')
+    navigate('/candidate/profile')
+  }
+  else{
+    alert('This id is already registered as employer');
+    return;
+  }
 }
 //user not exist
 else{
@@ -40,31 +46,20 @@ else{
 
     signInWithPopup(auth, provider)
       .then((result) => {
-        const User=result;
-        const {email,displayName,photoURL}=User;
+        console.log(result,'result');
+        const user=result.user;
+        const {email,displayName,photoURL}=user;
+        console.log(email,displayName,photoURL,"user")
         dispatch({
           type:'LOGIN',
           payload:{
             email,displayName,photoURL
           }
         })
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        
         redirectUser();
       }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        console.log(error,'error')
       });
   }
   return (

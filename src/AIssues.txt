@@ -1,0 +1,2 @@
+1. Issue in employer logo image in fileUpload.js upload 
+2. Refreshing the entire page after clicking on submit button in the candidate onboarding form page
