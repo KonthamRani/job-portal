@@ -43,7 +43,7 @@ function TopBar({pages}) {
   return (
     <AppBar style={{
       backgroundColor: "#fff"
-    }} position="static">
+    }} position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
 

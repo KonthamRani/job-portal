@@ -1,12 +1,11 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './DropDown.css'
 export default function DropDown({
-    options,value,onChange
+    options,value,onChange,disabled
 }) {
   const [age, setAge] = React.useState('');
 
@@ -16,6 +15,7 @@ export default function DropDown({
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
         <Select
+        disabled={disabled}
         required={true}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -25,7 +25,7 @@ export default function DropDown({
         >
             {
                 options.map((opt,index)=>{
-                    return <MenuItem key={index}value={opt}>{opt}</MenuItem>
+                    return <MenuItem  disabled={disabled} key={index} value={opt}>{opt}</MenuItem>
                 })
             }
         </Select>

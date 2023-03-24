@@ -6,7 +6,8 @@ import {storage} from '../../../FireBaseConfig/FireBaseConfig'
 const FileUpload = ({
   fileType,
   onUpload,
-  value
+  value,
+  disabled
 }) => {
   const upload=(e)=>{
     const file=e.target.files[0];
@@ -42,7 +43,7 @@ uploadTask.on('state_changed',
     <div>
         <label className='onboarding-label'>Resume</label>
         <TextField id='outlined-basic' variant='outlined' fullWidth
-          type={"file"} onChange={e=>upload(e)}
+          type={"file"} onChange={e=>upload(e)} disabled={disabled}
           inputProps={{accept:fileType==='doc'?'application/pdf':'image/*'}}
           />
         
