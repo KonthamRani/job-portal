@@ -70,7 +70,8 @@ const Form = ({ setShowFormInMobile,selectedJob }) => {
       ...jobData, jobId,
       createdAt: new Date().toISOString(),
       employerId: userData.user.email,
-      employerName: userData.user.displayName
+      employerName: userData.userInfo.company_name,
+      company_logo:userData.userInfo.company_logo
     })
 if(selectedJob){
 

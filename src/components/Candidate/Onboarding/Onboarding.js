@@ -53,7 +53,7 @@ const CandidateOnboarding = () => {
     await setDoc(doc(db,'users',userData.user.email)
     ,
     {...userInformation,
-    userType:'candidate   '})
+    userType:'candidate'})
     setLoading(false)
     toastMessage('Onboarding Successful',"success")
     navigate('/candidate/profile')

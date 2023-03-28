@@ -20,7 +20,6 @@ export default function DropDown({
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={value}
-          label="Age"
           onChange={(e)=>onChange(e.target.value)}
         >
             {

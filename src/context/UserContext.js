@@ -15,14 +15,14 @@ const initialValue=JSON.parse(localStorage.getItem('user')) || {
 export const reducer=(state,action)=>{
     switch(action.type){
         case "LOGIN":
-            var data={
+             var data={
                 user:action.payload,
                 isAuth:true
             }
             localStorage.setItem('user',JSON.stringify(data))
            return data
         case "LOGOUT":
-           var data= {
+            data= {
                 user:null,
                 isAuth:false,
                 userInfo:null
@@ -30,7 +30,7 @@ export const reducer=(state,action)=>{
             localStorage.setItem('user',JSON.stringify(data))
            return data
         case "SET_USER_INFO":
-           var data= {
+            data= {
                 ...state,
                 userInfo:action.payload
             }

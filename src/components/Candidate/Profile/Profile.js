@@ -74,7 +74,7 @@ const CandidateProfile = () => {
         ,
         {
           ...userInformation,
-          userType: 'candidate   '
+          userType: 'candidate'
         })
       setLoading(false)
       toastMessage('Data Updated Successfully', "success")

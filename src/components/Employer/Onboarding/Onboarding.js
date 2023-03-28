@@ -146,12 +146,12 @@ const EmployerOnboarding = () => {
       </Grid>
       
       <Grid item xs={12}>
-         {/* <FileUpload
+          <FileUpload
         required={true}
         fileType={'image'}
         value={userInformation.company_logo}
         onUpload={(url)=>setUserInformation({...userInformation,company_logo:url})}
-        />  */}
+        />  
       </Grid>
       <Grid item xs={12} className='submit-btn'>
         {

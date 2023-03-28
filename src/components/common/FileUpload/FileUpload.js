@@ -49,16 +49,14 @@ uploadTask.on('state_changed',
         
     </div>
     {
-      fileType==='doc' && value
-      ?
-        (<div style={{margin:'20px'}}>
+    fileType==='doc' && value?( <div style={{margin:'20px'}}>
           <img src={pfgimg} width='100px' alt="pfgimg"/>
-        </div>
-      ):fileType==='image' && value
-      (
-      <div style={{margin:'20px'}}>
+        </div>)
+      
+      :fileType==='image' && value?( <div style={{margin:'20px'}}>
       <img src={value} width='100px' alt="pfgimg"/>
-    </div>)
+    </div>
+    ):null
     }
     </div>
   )

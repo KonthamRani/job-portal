@@ -7,17 +7,44 @@ import './Auth.css'
 import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {auth} from '../../FireBaseConfig/FireBaseConfig'
 import {useNavigate} from 'react-router-dom'
+import {db} from "../../FireBaseConfig/FireBaseConfig"
+import {doc,setDoc,getDoc} from 'firebase/firestore';
 
 function Auth({type}) {
   const navigate=useNavigate();
   const provider = new GoogleAuthProvider();
   const [userData,dispatch]=useContext(UserContext);
-  const redirectUser=()=>{
+  const redirectUser=async(email)=>{
+    //call firebase func to check user exists or not
+    let u=await getDoc(doc(db,"users",email))
+    let userInfoFromDb=null
+    if(u.exists()){
+      alert('user exists')
+      userInfoFromDb=u.data();
+      console.log('user data',u.data())
+    }
+    // if(type==='candidate')
+    // {
+    //   if(userInfoFromDb){
+    //     navigate('/employer/profile')
+    //   }
+    //   else{
+    //     navigate('/employer/onboarding')
+    //   }
+    // }
+
+
+
     if(type==='candidate'){
+      
       console.log(userData)
       //if user exists in db
-if(false){
-  if(true){
+if(userInfoFromDb){
+  if(userInfoFromDb.userType==='candidate'){
+    dispatch({
+      type:'SET_USER_INFO',
+      payload:userInfoFromDb
+    })
 
     navigate('/candidate/profile')
   }
@@ -32,9 +59,26 @@ else{
 }
     }
     else{
-      if(false){
-        navigate('/employer/profile')
+      // if(userInfoFromDb){
+      //   navigate('/employer/profile')
+      // }
+      // else{
+      //   navigate('/employer/onboarding')
+      // }
+      if(userInfoFromDb){
+        if(userInfoFromDb.userType==='employer'){
+          dispatch({
+            type:'SET_USER_INFO',
+            payload:userInfoFromDb
+          })
+          navigate('/employer/profile')
+        }
+        else{
+          alert('This id is already registered as candidate');
+          return;
+        }
       }
+      //user not exist
       else{
         navigate('/employer/onboarding')
       }
@@ -57,7 +101,7 @@ else{
           }
         })
         
-        redirectUser();
+        redirectUser(email);
       }).catch((error) => {
         console.log(error,'error')
       });
