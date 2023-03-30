@@ -1,3 +1,3 @@
-1. Issue in employer ng the entirelogo image in fileUpload.js upload 
-2. Refreshi page after clicking on submit button in the candidate onboarding form page
-3. Employer jobs page skills styling
+1. after logging in employer/profile page is opening in editable mode
+2. getting wrong data in candidate applications because of the moment
+3. reject functionality is not working in employer applicants

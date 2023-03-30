@@ -31,6 +31,10 @@ function Navs() {
             {
                 title: 'Conversation',
                 path: '/candidate/conversation'
+            },
+            {
+                title:'Applications',
+                path:'/candidate/applications'
             }
         ];
         return (

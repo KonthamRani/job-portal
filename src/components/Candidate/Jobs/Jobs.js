@@ -50,7 +50,10 @@ const CandidateJobs = () => {
       jobId:job.jobId,
       jobTitle:job.jobTitle,
       jobLocation:job.jobLocation,
-      jobType:job.jobType
+      jobType:job.jobType,
+      resume:userData.userInfo.resume,
+      status:"applied",
+      createdAt:new Date().toISOString()
     })
     toastMessage('Applied for job successfully','success')
   }
