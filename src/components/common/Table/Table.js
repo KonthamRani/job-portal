@@ -21,10 +21,12 @@ const Table = ({ columns, data,handleAction }) => {
                 console.log("columns",columns)
                 if(column.type==="date")
                 {
+                 
                   return (
                   <div
                 style={column.style}>
-                  {moment(row[column.datakey]).format("MMM Do YY")}
+                  { moment(row[column.datakey]).format("MMM Do YY")}
+               
                 </div>
                 )
                 }
@@ -45,8 +47,18 @@ const Table = ({ columns, data,handleAction }) => {
 
                 return <div
                 style={column.style}>
-                  <button className="accepted" onClick={()=>{handleAction("accept",row)}}>Accept</button>
-                  <button className='rejected' onClick={()=>{handleAction("reject",row)}}>Reject</button>
+                  <button className="accepted"
+                  disabled={row.status==="accepted"?true:false}
+                  style={{
+                    opacity:row.status==='accepted'?0.5:1
+                  }}
+                  onClick={()=>{handleAction("accept",row)}}>Accept</button>
+                  <button className='rejected' 
+                  disabled={row.status==='accepted'?true:false}
+                  style={{
+                    opacity:row.status==='accepted'?0.5:1
+                  }}
+                  onClick={()=>{handleAction("reject",row)}}>Reject</button>
                 </div>
                 }
                 else

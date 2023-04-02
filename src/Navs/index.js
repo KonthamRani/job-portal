@@ -40,7 +40,7 @@ function Navs() {
         return (
             <div>
                 <TopBar pages={pages} />
-                <div style={{marginTop:"100px"}}>
+                <div style={{marginTop:"70px"}}>
 
                 <Outlet />
                 </div>
@@ -70,7 +70,7 @@ function Navs() {
         return (
             <div>
                 <TopBar pages={pages} />
-                <div style={{marginTop:"100px"}}>
+                <div style={{marginTop:"70px"}}>
 
                 <Outlet />
                 </div>

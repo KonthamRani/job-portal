@@ -13,7 +13,7 @@ import {doc,setDoc,getDoc} from 'firebase/firestore';
 import FormLoading from '../../common/FormLoading/FormLoading'
 const EmployerProfile = () => {
   const [screenLoading, setScreenLoading] = useState(true);
-  const [isEdit, setIsEdit] = useState(true);
+  const [isEdit, setIsEdit] = useState(false);
   const [loading,setLoading]=useState(false);
   const [userData,dispatch]=useContext(UserContext)
   const [userInformation, setUserInformation] = useState({

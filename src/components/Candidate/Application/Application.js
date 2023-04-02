@@ -7,14 +7,12 @@ import Table from '../../common/Table/Table'
 const columns = [{
   Header: "Company",
   datakey:"employerName",
-  type:"date",
   style:{
     width:'25%'
   }
 }, {
   Header: "Job Title",
   datakey:"jobTitle",
-  type:"date",
   style:{
     width:'25%'
   }
@@ -30,7 +28,6 @@ const columns = [{
 {
   Header: "Status",
   datakey:"status",
-  type:"date",
   style:{
     width:'25%'
   }

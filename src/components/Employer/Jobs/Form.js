@@ -66,6 +66,7 @@ const Form = ({ setShowFormInMobile,selectedJob }) => {
     //posting data to firebase in jobs collection
     setLoading(true);
     try{
+      console.log(userData,"userData")
     await setDoc(doc(db, 'jobs', jobId), {
       ...jobData, jobId,
       createdAt: new Date().toISOString(),

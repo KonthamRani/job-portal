@@ -1,3 +1,4 @@
+import {auth} from '../../FireBaseConfig/FireBaseConfig'
 import React,{useContext} from 'react'
 
 import {UserContext} from '../../context/UserContext'
@@ -5,7 +6,6 @@ import authLogo from '../../assets/authlogo.png'
 import btn from '../../assets/btn.png'
 import './Auth.css'
 import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import {auth} from '../../FireBaseConfig/FireBaseConfig'
 import {useNavigate} from 'react-router-dom'
 import {db} from "../../FireBaseConfig/FireBaseConfig"
 import {doc,setDoc,getDoc} from 'firebase/firestore';
@@ -80,6 +80,10 @@ else{
       }
       //user not exist
       else{
+        dispatch({
+          type:'SET_USER_INFO',
+          payload:userInfoFromDb
+        })
         navigate('/employer/onboarding')
       }
     }

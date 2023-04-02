@@ -61,7 +61,7 @@ const handleAction=async (type,data)=>{
         employerId:userData.user.email,
         candidateId:data.candidateId,
         candidateName:data.candidateName,
-        employerName:userData.user.displayName
+        employerName:data.employerName
       })
       await setDoc(
         doc(db,"conversations",conversation_id),
@@ -89,11 +89,12 @@ const handleAction=async (type,data)=>{
   else if(type==="reject"){
     //delete the application with application id
     try{
-
+      console.log(data.applicationId,"app id")
       const doc_ref=doc(db,"applications",data.applicationId)
       await deleteDoc(doc_ref)
+      
       toastMessage("Application is rejected",'success')
-      console.log("inside try")
+      
     }
     catch(error){
       console.log(error);
@@ -112,9 +113,9 @@ const handleAction=async (type,data)=>{
         
         apps.push(doc.data())
     
-    setApplicants(apps)
-    console.log(apps,"apps")
       })
+      setApplicants(apps)
+      console.log(apps,"apps")
     })
     
   }

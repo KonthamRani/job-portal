@@ -41,7 +41,7 @@ const CandidateJobs = () => {
     }
     try{
     const applicationId=uuidv4()
-    await setDoc(doc(db,'applications',job.jobId),{
+    await setDoc(doc(db,'applications',applicationId),{
       applicationId,
       candidateId:userData.user.email,
       candidateName:userData.user.displayName,

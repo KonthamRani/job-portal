@@ -1,0 +1,102 @@
+.last-message-container{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 90%;
+    margin: auto;
+}
+.last-message{
+    margin: 20px 5px;
+
+}
+.last-message h2{
+    font-weight: 600;
+    font-size: clamp(14px,1.3vw,22px);
+    line-height: 26px;
+    color: #000;
+}
+.last-message h3{
+    font-weight: 400;
+    font-size: clamp(12px,1.3vw,16px);
+    line-height: 19px;
+    margin: 2px;
+    color: #828282;
+}
+.last-message-header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.last-message-text{
+    text-align: left;
+    padding: 7px ;
+    border-bottom: 1px solid #0000002b;
+    font-weight: 400;
+    font-size: clamp(12px,1.3vw,18px);
+    line-height: 22px;
+    color: #4f4f4f;
+}
+.last-message-text-selected{
+    text-align: left;
+    padding: 7px 0px;
+    padding-left: 10px;
+    border-left: 3px solid #4540db;
+    font-weight: 400;
+    font-size: clamp(12px,1.3vw,18px);
+    line-height: 22px;
+    color: #4f4f4f;
+    border-radius: 5px;
+}
+/* MESSAGE AREA */
+.message-area-container{
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+}
+.message-area-container-header{
+    display:flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000;
+    padding: 10px 0px;
+    border-bottom: 1px solid #0000001c;
+    width: 90%;
+    margin: auto;
+}
+.message-area-container-messages{
+    min-height: 70%;
+    overflow-y: scroll;
+    width: 90%;
+    margin: auto;
+}
+.message-area-container-text-area{
+    gap:10px;
+    padding:10px 20px;
+    display: flex;
+}
+.message-area-container-text-area button{
+   
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    background: #4540db;
+    color:#fff;
+    border: none;
+    border-radius: 10px;
+}
+.message-area-container-messages-message{
+    display: flex;
+    margin: 20px 0px;
+}
+.message-area-container-messages-message>div{
+    background-color: #eaeaea;
+    display: flex;
+    padding: 10px;
+    max-width: 50%;
+    text-align: left;
+}
+

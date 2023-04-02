@@ -1,3 +1,2 @@
 1. after logging in employer/profile page is opening in editable mode
-2. getting wrong data in candidate applications because of the moment
-3. reject functionality is not working in employer applicants
+2. reject functionality is not working in employer applicants
