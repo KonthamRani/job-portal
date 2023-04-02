@@ -27,7 +27,7 @@ path:'employer/auth'},
       <TopBar pages={pages}/>
       <RightJobSection/>
       <OnePlatform/>
-      <AllCandidates/>
+      {/* <AllCandidates/> */}
       <Footer/>
     </div>
   )

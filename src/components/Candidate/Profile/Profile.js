@@ -11,6 +11,7 @@ import { db } from "../../../FireBaseConfig/FireBaseConfig"
 import { useNavigate } from 'react-router-dom';
 import toastMessage from '../../../Util/toastMessages'
 import FormLoading from '../../common/FormLoading/FormLoading'
+
 const CandidateProfile = () => {
   const [isEdit, setIsEdit] = useState(false)
   const [loading, setLoading] = useState(false);
@@ -87,6 +88,10 @@ const CandidateProfile = () => {
     }
     setIsEdit(false)
   }
+  const handleLogOut=()=>{
+    localStorage.clear();
+    navigate('/')
+  }
   return screenLoading?(<div><FormLoading fields={10}
   height={100}/></div>):
     (<form onSubmit={e => { submit(e) }}>
@@ -114,7 +119,7 @@ const CandidateProfile = () => {
                  )
             }
           </div>
-          <Button type="button">Log Out</Button>
+          <Button type="button" onClick={handleLogOut}>Log Out</Button>
         </Grid>
         <Grid item xs={12} md={6}>
           <label className='onboarding-label'>Name</label>

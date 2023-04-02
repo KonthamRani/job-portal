@@ -2,7 +2,10 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div>
+      <hr/>
+      &copy; Rani 2023
+    </div>
   )
 }
 

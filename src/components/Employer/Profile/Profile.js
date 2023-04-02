@@ -90,6 +90,10 @@ const EmployerProfile = () => {
     }
     setIsEdit(false)
   }
+  const handleLogOut=()=>{
+    localStorage.clear();
+    navigate('/')
+  }
   return screenLoading?(<div><FormLoading fields={10}
     height={100}/></div>):
     (<form onSubmit={e=>{submit(e)}}>
@@ -117,7 +121,7 @@ const EmployerProfile = () => {
                  )
             }
           </div>
-          <Button type="button">Log Out</Button>
+          <Button type="button" onClick={handleLogOut}>Log Out</Button>
         </Grid>
       <Grid item xs={12} md={6}>
         <label className='onboarding-label'>Company Name</label>

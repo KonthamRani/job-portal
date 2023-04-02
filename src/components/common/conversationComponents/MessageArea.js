@@ -3,33 +3,7 @@ import './conversation.css'
 import { UserContext } from '../../../context/UserContext'
 import { TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send';
-const mock=[
-    {
-        id:"fsfa",
-        message:"hello",
-        senderId:"gfaga"
-    },
-    {
-        id:"fsf1a",
-        message:"hello1",
-        senderId:"gfa1ga"
-    },
-    {
-        id:"fsfa2",
-        message:"hello2",
-        senderId:"gfaga2"
-    },
-    {
-        id:"fsfa3",
-        message:"hello3",
-        senderId:"gfaga3"
-    },
-    {
-        id:"fsfa4",
-        message:"hello4",
-        senderId:"gfaga4"
-    }
-]
+
 const MessageArea = ({
     allConversations,
     selectedMessage,

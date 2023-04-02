@@ -110,7 +110,7 @@ function TopBar({pages}) {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -122,7 +122,7 @@ function TopBar({pages}) {
               textDecoration: 'none',
             }}
           >
-            <img width="100px" src={Logo} alt="Logo" />
+            <img width="100px"  src={Logo} alt="Logo" />
 
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -139,15 +139,17 @@ function TopBar({pages}) {
               </Button>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
+                <button>
+                  
+                </button>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
 
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>
