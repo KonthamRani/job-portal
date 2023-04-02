@@ -2,13 +2,13 @@ import {auth} from '../../FireBaseConfig/FireBaseConfig'
 import React,{useContext} from 'react'
 
 import {UserContext} from '../../context/UserContext'
-import authLogo from '../../assets/authlogo.png'
 import btn from '../../assets/btn.png'
 import './Auth.css'
 import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {useNavigate} from 'react-router-dom'
 import {db} from "../../FireBaseConfig/FireBaseConfig"
 import {doc,setDoc,getDoc} from 'firebase/firestore';
+import toastMessage from '../../Util/toastMessages';
 
 function Auth({type}) {
   const navigate=useNavigate();
@@ -19,21 +19,10 @@ function Auth({type}) {
     let u=await getDoc(doc(db,"users",email))
     let userInfoFromDb=null
     if(u.exists()){
-      alert('user exists')
+      toastMessage("User exists","info")
       userInfoFromDb=u.data();
       console.log('user data',u.data())
     }
-    // if(type==='candidate')
-    // {
-    //   if(userInfoFromDb){
-    //     navigate('/employer/profile')
-    //   }
-    //   else{
-    //     navigate('/employer/onboarding')
-    //   }
-    // }
-
-
 
     if(type==='candidate'){
       
@@ -49,7 +38,8 @@ if(userInfoFromDb){
     navigate('/candidate/profile')
   }
   else{
-    alert('This id is already registered as employer');
+    toastMessage("This id is already registered as employer","info")
+    
     return;
   }
 }
@@ -59,12 +49,6 @@ else{
 }
     }
     else{
-      // if(userInfoFromDb){
-      //   navigate('/employer/profile')
-      // }
-      // else{
-      //   navigate('/employer/onboarding')
-      // }
       if(userInfoFromDb){
         if(userInfoFromDb.userType==='employer'){
           dispatch({
@@ -74,7 +58,7 @@ else{
           navigate('/employer/profile')
         }
         else{
-          alert('This id is already registered as candidate');
+          toastMessage("This id is already registered as candidate","info");
           return;
         }
       }
