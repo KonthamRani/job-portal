@@ -19,7 +19,7 @@ function Auth({type}) {
     let u=await getDoc(doc(db,"users",email))
     let userInfoFromDb=null
     if(u.exists()){
-      toastMessage("User exists","info")
+      toastMessage("User already exists","info")
       userInfoFromDb=u.data();
       console.log('user data',u.data())
     }

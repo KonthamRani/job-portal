@@ -139,9 +139,9 @@ function TopBar({pages}) {
               </Button>
             ))}
           </Box>
-                <button>
-                  
-                </button>
+                {/* <button>
+                  Dark Mode
+                </button> */}
           {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
